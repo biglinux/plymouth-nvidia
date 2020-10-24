@@ -1,0 +1,7 @@
+ec7ecfac13e2f92f8b2aa198cc151b6c  DEBIAN/dpkg-divert
+0c8c5fd3f1844aa677ed999698436e87  DEBIAN/preinst
+2e825f6aff13699c96da4a0dbe5d8348  DEBIAN/postrm
+d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
+f38ac5d54c85b508e775afa646f656e8  DEBIAN/control
+8d2b1ac5002a123fed40e0ff312e75d0  etc/initramfs-tools/modules
+5e0f4fa41627803783eca3968452c4c3  etc/modprobe.d/nvidia.conf

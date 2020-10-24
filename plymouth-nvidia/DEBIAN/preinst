@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+package_name=plymouth-nvidia
+mkdir -p "/usr/share/dpkgdivert/plymouth-nvidia"
+case "$1" in
+  install)
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/plymouth-nvidia/etcmodprobe.dnvidia.conf" --rename "/etc/modprobe.d/nvidia.conf"
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/plymouth-nvidia/etcinitramfs-toolsmodules" --rename "/etc/initramfs-tools/modules"
+    ;;
+  upgrade)
+if [ "$(dpkg-divert --list "/etc/modprobe.d/nvidia.conf")" = "" ]
+then
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/plymouth-nvidia/etcmodprobe.dnvidia.conf" --rename "/etc/modprobe.d/nvidia.conf"
+fi
+if [ "$(dpkg-divert --list "/etc/initramfs-tools/modules")" = "" ]
+then
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/plymouth-nvidia/etcinitramfs-toolsmodules" --rename "/etc/initramfs-tools/modules"
+fi
+;;
+esac
+exit 0
